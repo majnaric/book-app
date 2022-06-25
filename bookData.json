@@ -1,0 +1,23 @@
+{
+    "beautifulcreatures": {
+        "title": "Beatiful Creatures",
+        "author": "Terry Pratchett",
+        "cover": "https://covers.openlibrary.org/b/id/6280152-M.jpg",
+        "pages": "230",
+        "isbn": "95812192165"
+    },
+    "metropolis": {
+        "title": "Metropolis",
+        "author": "Ben Wilson",
+        "cover": "https://covers.openlibrary.org/b/id/10544033-M.jpg",
+        "pages": "345",
+        "isbn": "95613216511"
+    },
+    "leonardodavinci": {
+        "title": "Leonardo da Vinci",
+        "author": "Walter Isaacson",
+        "cover": "https://covers.openlibrary.org/b/id/9227942-M.jpg",
+        "pages": "485",
+        "isbn": "95613651511"
+    }
+}

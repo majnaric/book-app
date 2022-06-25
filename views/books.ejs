@@ -1,0 +1,23 @@
+<%- include('partials/head') %>
+<%- include('partials/navbar') %>
+
+
+<div class="container">
+    
+    <article>
+        
+         <% for(book in books){ %>
+            <h2><%= books[book].title %></h2>
+            <h5>Author: <%= books[book].author %> </h5>
+            <img src="<%= books[book].cover %>" alt="">
+            <p>Pages: <%= books[book].pages %> </p>
+            <p>ISBN: <%= books[book].isbn %> </p>
+         <% } %>
+            
+           
+    </article>
+
+</div>
+
+
+<%- include('partials/footer') %>

@@ -2,6 +2,9 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const redditData = require('./data.json');
+const bookData = require('./bookData.json');
+
+
 
 app.use(express.static(path.join(__dirname, 'assets')))
 app.set('view engine', 'ejs');
@@ -31,6 +34,12 @@ app.get('/r/:subreddit', (req, res) => {
 app.get('/r/:subreddit/:postId', (req, res) => {
     const { subreddit, postId } = req.params;
     res.send(`Viewing ${postId} post on the ${subreddit} subreddit`)
+})
+
+app.get('/books', (req, res) => {
+    var books = Object.values(bookData);
+    console.log(books)
+    res.render('books.ejs', { books })
 })
 
 app.post('/cats', (req, res) => {
