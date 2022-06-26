@@ -1,12 +1,40 @@
 <%- include('partials/head') %>
 <%- include('partials/navbar') %>
 
-    <h1>Your randomm number is: <%= num %> </h1>
-<% if(num % 2 === 0){ %> </p>
-     <p>This number is even. </p>
-    <% } else { %>
-        <p>This number is False. </p>
-        <% } %>  
+<h1>All Books</h1>
 
-        
+<div class="container">
+    <%- include('partials/sidenav') %>
+    
+    <article>
+
+        <div class="container">
+            <h1 class="mt-5 mb-3 text-center">New Books</h1>
+            <div class="row justify-content-between">
+
+                <% for(bookData of dataOfBooks){ %>
+
+              <div class="col-2">
+                <div class="card" style="width: 10rem;">
+                    <img src="<%= bookData.cover %>" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title"><%= bookData.title %> </h5>
+                      <p class="card-text"><%= bookData.author %> </p>
+                    </div>
+                    <div class="card-body">
+                      <a href="rand/<%=bookData._id%>" class="card-link">More Detail About This Book</a>
+                    </div>
+                  </div>
+              </div>
+
+              <% } %> 
+
+
+            </div>           
+            
+          </div>
+           
+    </article>
+
+ 
 <%- include('partials/footer') %>

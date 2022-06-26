@@ -19,5 +19,27 @@
         "cover": "https://covers.openlibrary.org/b/id/9227942-M.jpg",
         "pages": "485",
         "isbn": "95613651511"
+    },
+    "verity": {
+        "title": "Verity",
+        "author": "Lisa T. Bergren",
+        "cover": "https://covers.openlibrary.org/b/id/8803217-M.jpg",
+        "pages": "145",
+        "isbn": "9586225622"
+    },
+    "animalfarm": {
+        "title": "Animal Farm",
+        "author": "George Orvell",
+        "cover": "https://covers.openlibrary.org/b/id/11261770-M.jpg",
+        "pages": "438",
+        "isbn":"95626186254"
+    },
+    "happilyletterafter": {
+        "title": "Happily Letter After",
+        "author": "Penelope Ward",
+        "cover": "https://covers.openlibrary.org/b/id/10630589-M.jpg",
+        "pages": "354",
+        "isbn": "9516516812165"
     }
+
 }

@@ -3,6 +3,19 @@ const app = express();
 const path = require('path');
 const redditData = require('./data.json');
 const bookData = require('./bookData.json');
+const mongoose = require('mongoose');
+// const methodOverride = require('method-override');
+const NewBooks = require('./models/book');
+
+
+mongoose.connect('mongodb://localhost:27017/booksApp')
+.then(() => {
+    console.log("MONGO CONNECTION OPEN!");
+}).catch(err => {
+    console.log("Oh no, Mongo connection lost");
+    console.log(err);
+})
+
 
 
 
@@ -16,9 +29,18 @@ app.get('/', (req, res) => {
     res.render('home.ejs')
 })
 
-app.get('/rand', (req, res) => {
-    const num = Math.floor(Math.random() * 10) + 1;
-    res.render('random.ejs', { num })
+app.get('/rand', async (req, res) => {
+    const dataOfBooks = await NewBooks.find({})
+    console.log(dataOfBooks);
+    res.render('random.ejs', { dataOfBooks })
+    // res.render('random.ejs', { num })
+})
+
+app.get('/rand/:id', async (req, res) => {
+    const { id } = req.params;
+    const bookFound = await NewBooks.findById(id);
+    console.log(bookFound)
+    res.render('single', { bookFound })
 })
 
 app.get('/r/:subreddit', (req, res) => {
