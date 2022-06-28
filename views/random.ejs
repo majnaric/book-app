@@ -12,7 +12,7 @@
             <h1 class="mt-5 mb-3 text-center">New Books</h1>
             <div class="row justify-content-between">
 
-                <% for(bookData of dataOfBooks){ %>
+                <% for(bookData of dataOfNewBooks){ %>
 
               <div class="col-2">
                 <div class="card" style="width: 10rem;">
@@ -35,6 +35,126 @@
           </div>
            
     </article>
+
+    <article>
+
+      <div class="container">
+          <h1 class="mt-5 mb-3 text-center">Editors Choice</h1>
+          <div class="row justify-content-between">
+
+              <% for(editorChoice of dataOfEditorsChoice){ %>
+
+            <div class="col-2">
+              <div class="card" style="width: 10rem;">
+                  <img src="<%= editorChoice.cover %>" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title"><%= editorChoice.title %> </h5>
+                    <p class="card-text"><%= editorChoice.author %> </p>
+                  </div>
+                  <div class="card-body">
+                    <a href="rand/<%=editorChoice._id%>" class="card-link">More Detail About This Book</a>
+                  </div>
+                </div>
+            </div>
+
+            <% } %> 
+
+
+          </div>           
+          
+        </div>
+         
+  </article>
+
+  <article>
+
+    <div class="container">
+        <h1 class="mt-5 mb-3 text-center">Lives Books</h1>
+        <div class="row justify-content-between">
+
+            <% for(livesBooks of dataOfLivesBooks){ %>
+
+          <div class="col-2">
+            <div class="card" style="width: 10rem;">
+                <img src="<%= livesBooks.cover %>" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title"><%= livesBooks.title %> </h5>
+                  <p class="card-text"><%= livesBooks.author %> </p>
+                </div>
+                <div class="card-body">
+                  <a href="rand/<%=livesBooks._id%>" class="card-link">More Detail About This Book</a>
+                </div>
+              </div>
+          </div>
+
+          <% } %> 
+
+
+        </div>           
+        
+      </div>
+       
+</article>
+
+<article>
+
+  <div class="container">
+      <h1 class="mt-5 mb-3 text-center">Our Top Novels</h1>
+      <div class="row justify-content-between">
+
+          <% for(topNovels of dataOfTopNovels){ %>
+
+        <div class="col-2">
+          <div class="card" style="width: 10rem;">
+              <img src="<%= topNovels.cover %>" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title"><%= topNovels.title %> </h5>
+                <p class="card-text"><%= topNovels.author %> </p>
+              </div>
+              <div class="card-body">
+                <a href="rand/<%=topNovels._id%>" class="card-link">More Detail About This Book</a>
+              </div>
+            </div>
+        </div>
+
+        <% } %> 
+
+
+      </div>           
+      
+    </div>
+     
+</article>
+
+<article>
+
+  <div class="container">
+      <h1 class="mt-5 mb-3 text-center">Terry Pratchett Books</h1>
+      <div class="row justify-content-between">
+
+          <% for(pratchettBooks of dataOfPratchett){ %>
+
+        <div class="col-2">
+          <div class="card" style="width: 10rem;">
+              <img src="<%= pratchettBooks.cover %>" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title"><%= pratchettBooks.title %> </h5>
+                <p class="card-text"><%= pratchettBooks.author %> </p>
+              </div>
+              <div class="card-body">
+                <a href="rand/<%=pratchettBooks._id%>" class="card-link">More Detail About This Book</a>
+              </div>
+            </div>
+        </div>
+
+        <% } %> 
+
+
+      </div>           
+      
+    </div>
+     
+</article>
 
  
 <%- include('partials/footer') %>

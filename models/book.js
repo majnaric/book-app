@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const bookSchema = new mongoose.Schema({
+const newBookSchema = new mongoose.Schema({
     title: {
       type: String,
     require: true
@@ -23,7 +23,105 @@ const bookSchema = new mongoose.Schema({
 
 })
 
-const NewBooks = mongoose.model('NewBooks', bookSchema);
+const editorsChoiceSchema = new mongoose.Schema({
+    title: {
+      type: String,
+    require: true
+    },
+    author: {
+        type: String
+    },
+    category: {
+        type: String
+    },
+    cover: {
+        type: String
+    },
+    pages: {
+        type: Number
+    },
+    isbn: {
+        type: Number
+    }
+
+})
+
+const livesBooksSchema = new mongoose.Schema({
+    title: {
+      type: String,
+    require: true
+    },
+    author: {
+        type: String
+    },
+    category: {
+        type: String
+    },
+    cover: {
+        type: String
+    },
+    pages: {
+        type: Number
+    },
+    isbn: {
+        type: Number
+    }
+
+})
+
+const topNovelsSchema = new mongoose.Schema({
+    title: {
+      type: String,
+    require: true
+    },
+    author: {
+        type: String
+    },
+    category: {
+        type: String
+    },
+    cover: {
+        type: String
+    },
+    pages: {
+        type: Number
+    },
+    isbn: {
+        type: Number
+    }
+
+})
+
+const terryPratchettSchema = new mongoose.Schema({
+    title: {
+      type: String,
+    require: true
+    },
+    author: {
+        type: String
+    },
+    category: {
+        type: String
+    },
+    cover: {
+        type: String
+    },
+    pages: {
+        type: Number
+    },
+    isbn: {
+        type: Number
+    }
+
+})
+
+const NewBooks = mongoose.model('NewBooks', newBookSchema);
+const EditorsChoice = mongoose.model('EditorsChoice', editorsChoiceSchema);
+const LivesBooks = mongoose.model('LivesBooks', livesBooksSchema);
+const TopNovels = mongoose.model('TopNovels', topNovelsSchema);
+const TerryPratchett = mongoose.model('TerryPratchett', terryPratchettSchema);
 
 
-module.exports = NewBooks;
+module.exports = {
+    NewBooks, EditorsChoice, LivesBooks, TopNovels, TerryPratchett
+}
