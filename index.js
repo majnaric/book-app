@@ -43,23 +43,30 @@ app.get('/rand', async (req, res) => {
 app.get('/rand/:id', async (req, res) => {
     const { id, title } = req.params;
   
-    const filter = { id: '_id' };
-    let docs = await NewBooks.aggregate([
-        { "$match": { "_id": mongoose.Types.ObjectId(id) } },
-        { "$lookup": {from: 'EditorsChoice', localField: 'EditorsChoice.title', foreignField: '_id', as: 'users'}
+    // const filter = { id: '_id' };
+    // let docs = await NewBooks.aggregate([
+    //     { "$match": { "_id": mongoose.Types.ObjectId(id) } },
+    //     { "$lookup": {from: 'LivesBooks', localField: 'bookId', foreignField: 'bookId', as: 'livesbooks'}
         
-        }
+    //     }
       
-        //   { $match: { 
-        //     // $expr: { $gt: [ { $size: '$status' }, 0] }
-        //   } }
-    ]);
+    //     //   { $match: { 
+    //     //     // $expr: { $gt: [ { $size: '$status' }, 0] }
+    //     //   } }
+    // ]);
     
+
+    const docs = await LivesBooks.aggregate([
+        {$lookup: {from: "newbooks", localField: "bookId", foreignField: "bookId", as: "lives"},
+    },
+        { "$match": { "_id": mongoose.Types.ObjectId(id) } }
+    ])
+
     docs.length; // 1
     // docs[0].title; // 'Jean-Luc Picard'
     // docs[0].author // 59
 
-    console.log(docs)
+    console.log(docs[0])
 
     // // `$match` is similar to `find()`
     // docs = await NewBooks.find(filter);

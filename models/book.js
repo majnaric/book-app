@@ -19,6 +19,9 @@ const newBookSchema = new mongoose.Schema({
     },
     isbn: {
         type: Number
+    },
+    bookId: {
+        type: Number
     }
 
 })
@@ -41,6 +44,9 @@ const editorsChoiceSchema = new mongoose.Schema({
         type: Number
     },
     isbn: {
+        type: Number
+    },
+    bookId: {
         type: Number
     }
 
@@ -65,6 +71,9 @@ const livesBooksSchema = new mongoose.Schema({
     },
     isbn: {
         type: Number
+    },
+    bookId: {
+        type: Number
     }
 
 })
@@ -88,6 +97,9 @@ const topNovelsSchema = new mongoose.Schema({
     },
     isbn: {
         type: Number
+    },
+    bookId: {
+        type: Number
     }
 
 })
@@ -110,6 +122,9 @@ const terryPratchettSchema = new mongoose.Schema({
         type: Number
     },
     isbn: {
+        type: Number
+    },
+    bookId: {
         type: Number
     }
 
