@@ -2,7 +2,8 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const redditData = require('./data.json');
-const bookData = require('./bookData.json');
+// const bookData = require('./bookData.json');
+const fetchedBooks = require('./fetchingBooks.js')
 const mongoose = require('mongoose');
 const ObjectId = require('bson-objectid');
 // const methodOverride = require('method-override');
@@ -16,7 +17,6 @@ mongoose.connect('mongodb://localhost:27017/booksApp')
     console.log("Oh no, Mongo connection lost");
     console.log(err);
 })
-
 
 
 
@@ -45,25 +45,14 @@ app.get('/rand', async (req, res) => {
     const livesBooksFound =  await AllOfTheBooks.find({rowOfBooks: "Lives Books"})
     const topNovelsFound =  await AllOfTheBooks.find({rowOfBooks: "Top Novels"})
     const terryPratchettFound =  await AllOfTheBooks.find({rowOfBooks: "Terry Pratchett Books"})
-  
-console.log(newBooksFound)
-    // .exec((err, docs) => {});
-
-
-    // const editorsChoiceFound = await EditorsChoiceRow.find({_id: ObjectId("62c491343baeae07590c1f76")}).books
-    console.log(newBooksFound)
+ 
     res.render('random.ejs', { newBooksFound, editorsChoiceFound, livesBooksFound, topNovelsFound, terryPratchettFound })
-    // res.render('random.ejs', { num })
 })
 
 app.get('/rand/:id', async (req, res) => {
     const { id, title } = req.params;
   
     const singleBooks = await AllOfTheBooks.findById(id);
-
-    console.log(singleBooks)
-    // const topFOund = await TopNovels.findById(id);
-    // const terryFound = await TerryPratchett.findById(id);
     
     res.render('single', { singleBooks })
 })

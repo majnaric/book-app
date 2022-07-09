@@ -139,9 +139,9 @@ const allofthebooksSchema = new mongoose.Schema({
       type: String,
     require: true
     },
-    author: {
+    author: [{
         type: String
-    },
+    }],
     category: {
         type: String
     },
@@ -152,7 +152,7 @@ const allofthebooksSchema = new mongoose.Schema({
         type: Number
     },
     isbn: {
-        type: Number
+        any: {}
     },
     bookId: {
         type: Number

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 // const methodOverride = require('method-override');
 const { NewBooks, EditorsChoice, LivesBooks, TopNovels,TerryPratchett, AllOfTheBooks } = require('./models/book');
+const fetchedBooks = require('./fetchingBooks.js')
 
 mongoose.connect('mongodb://localhost:27017/booksApp')
 .then(() => {
