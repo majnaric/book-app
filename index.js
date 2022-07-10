@@ -3,11 +3,11 @@ const app = express();
 const path = require('path');
 const redditData = require('./data.json');
 // const bookData = require('./bookData.json');
-const fetchedBooks = require('./fetchingBooks.js')
+// const fetchedBooks = require('./fetchingBooks.js')
 const mongoose = require('mongoose');
 const ObjectId = require('bson-objectid');
 // const methodOverride = require('method-override');
-const { NewBooks, EditorsChoice, LivesBooks, TopNovels, TerryPratchett, AllOfTheBooks} = require('./models/book');
+const {AllOfTheBooks} = require('./models/book');
 
 
 mongoose.connect('mongodb://localhost:27017/booksApp')
