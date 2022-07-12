@@ -1,14 +1,17 @@
+const axios = require('axios');
 const express = require('express');
 const app = express();
 const path = require('path');
+const bodyParser = require('body-parser')
 const redditData = require('./data.json');
 // const bookData = require('./bookData.json');
-// const fetchedBooks = require('./fetchingBooks.js')
+const bookSearch = require('./bookSearch.js')
 const mongoose = require('mongoose');
 const ObjectId = require('bson-objectid');
 // const methodOverride = require('method-override');
 const {AllOfTheBooks} = require('./models/book');
 
+bookSearch;
 
 mongoose.connect('mongodb://localhost:27017/booksApp')
 .then(() => {
@@ -23,12 +26,16 @@ mongoose.connect('mongodb://localhost:27017/booksApp')
 app.use(express.static(path.join(__dirname, 'assets')))
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'))
+app.use(express.urlencoded({extended: true}))
+app.use(bodyParser.json()) // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })) 
 
 
 
 app.get('/', (req, res) => {
     res.render('home.ejs')
 })
+
 
 app.get('/rand', async (req, res) => {
     // const dataOfAllBooks = await AllOfTheBooks.find({})
@@ -78,8 +85,13 @@ app.get('/books', (req, res) => {
     res.render('books.ejs', { books })
 })
 
-app.post('/cats', (req, res) => {
-    res.send('POST REQUEST TO /CATS')
+app.post('/rand', async (req, res) => {
+    const { books } = req.body;
+    const config = { params: { q: books } };
+   
+    const result= await axios.get(`http://openlibrary.org/search.json`, config);
+    const booksSearched = result.data.docs;
+    res.render('search.ejs', { booksSearched })
 })
 
 app.get('/cats', (req, res) => {

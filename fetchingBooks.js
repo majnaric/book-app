@@ -2,7 +2,7 @@ const axios = require('axios');
 const mongoose = require('mongoose');
 const assert = require('assert');
 // const methodOverride = require('method-override');
-const { NewBooks, EditorsChoice, LivesBooks, TopNovels,TerryPratchett, AllOfTheBooks } = require('./models/book');
+const { AllOfTheBooks } = require('./models/book');
 
 mongoose.connect('mongodb://localhost:27017/booksApp')
 .then(() => {
