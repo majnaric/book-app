@@ -1,40 +1,80 @@
 <%- include('partials/head') %>
-<form action="http://localhost:3000/rand" method="post">
-  <input type="text" name="books">
-  <button>Submit</button>
-</form>
 
-<h1>All Books</h1>
+<!-- Wrap start -->
+<div class="wrap">
+  <div class="content">
+<%- include('partials/navbar') %>
+
 
 <div class="container">
-    <%- include('partials/sidenav') %>
     
+
     <article>
 
-        <div class="container">
-            <h1 class="mt-5 mb-3 text-center">Searched Book</h1>
-            <div class="row justify-content-between">
+      <div class="container">
+          <h1 class="mt-5 mb-3 text-center">Searched Book</h1>
+          <div class="row justify-content-between">
 
-                <% for(let i = 0; i < 6; i++){ %>
-              <div class="col-2">
-                <div class="card" style="width: 10rem;">
-                   
-                      <h5 class="card-title"><%= booksSearched[i].title %> </h5>
-                      <p class="card-text"><%= booksSearched[i].author %> </p>
-                    </div>
-                    
-                  </div>
-              </div>
-              <% } %> 
+              <% for(let i = 0; i < booksSearched.length ; i++){ %>
+                <% if(booksSearched[i].seed[i]){ %>
+            <div class="col-2">
+              <div class="card" style="width: 12rem;">
 
-
-            </div>           
-            
-          </div>
            
-    </article>
+
+                  <% if (booksSearched[i].cover_i) { %> 
+                    
+                    <img src="https://covers.openlibrary.org/b/id/<%= booksSearched[i].cover_i %>-M.jpg" class="card-img-top" alt="Book Cover"> 
+                    
+                    <%  } else { %> 
+                      <p>No Image Available</p>
+                      
+                      <% } %> 
+                  <div class="card-body">
+                    <h5 class="card-title"><%= booksSearched[i].title %> </h5>
+                    <!-- Prints author names, max 2 -->
+                    <p class="card-text">
+                    <% for (let x = 0; x < 2; x++){ %> 
+                    
+                    <% if (booksSearched[i].author_name == undefined){ %>
+                     <% 'This book has no author in the records.' %>
+                      <% } else { %> 
+                    <% booksSearched[i].author_name[x] %> 
+                    <% } %>   
+                    <% } %>
+                    </p> 
+                    <!-- Prints category of books, max 2 -->
+                    <% if (booksSearched[i].subject) { %> 
+                      <p class="card-text"> Category:
+                      <% for(let j = 0; j < 2; j++){ %> 
+                    <%= booksSearched[i].subject[j] %> 
+
+                    <% } %> 
+                  </p>
+
+                    <% } else { %>
+                      <p class="card-text"> This book is not categorised </p>
+                      <% } %> 
+                  </div>
+                 
+                </div>
+            </div>
+            <% } %> 
+            <% } %> 
+
+
+          </div>           
+          
+        </div>
+         
+  </article>
    
 
+    <a href="http://localhost:3000/rand">Back to Books</a>
    
  
-<%- include('partials/footer') %>
+
+</div>
+  </div>
+
+  <%- include('partials/footer') %>

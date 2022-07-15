@@ -1,10 +1,13 @@
 <%- include('partials/head') %>
-<form action="http://localhost:3000/rand" method="post">
+<!-- Wrap start -->
+<div class="wrap">
+  <div class="content">
+<%- include('partials/navbar') %>
+<!-- <form action="http://localhost:3000/search" method="post">
   <input type="text" name="books">
   <button>Submit</button>
-</form>
+</form> -->
 
-<h1>All Books</h1>
 
 <div class="container">
     <%- include('partials/sidenav') %>
@@ -17,14 +20,14 @@
 
                 <% for(bookData of newBooksFound){ %>
               <div class="col-2">
-                <div class="card" style="width: 10rem;">
+                <div class="card text-center" style="width: 10rem; height: 29rem;">
                     <img src="<%= bookData.cover %>" class="card-img-top" alt="...">
                     <div class="card-body">
                       <h5 class="card-title"><%= bookData.title %> </h5>
                       <p class="card-text"><%= bookData.author %> </p>
                     </div>
                     <div class="card-body">
-                      <a href="rand/<%=bookData._id%>" class="card-link">More Detail About This Book</a>
+                      <a href="rand/<%=bookData._id%>" class="card-link"><button type="button" class="btn btn-primary">More Details</button></a>
                     </div>
                   </div>
               </div>
@@ -44,14 +47,14 @@
 
                 <% for(bookData of editorsChoiceFound){ %>
               <div class="col-2">
-                <div class="card" style="width: 10rem;">
+                <div class="card text-center" style="width: 11rem; height: 29.7rem;">
                     <img src="<%= bookData.cover %>" class="card-img-top" alt="...">
                     <div class="card-body">
                       <h5 class="card-title"><%= bookData.title %> </h5>
                       <p class="card-text"><%= bookData.author %> </p>
                     </div>
                     <div class="card-body">
-                      <a href="rand/<%=bookData._id%>" class="card-link">More Detail About This Book</a>
+                      <a href="rand/<%=bookData._id%>" class="card-link"><button type="button" class="btn btn-primary">More Details</button></a>
                     </div>
                   </div>
               </div>
@@ -71,14 +74,14 @@
 
                 <% for(bookData of livesBooksFound){ %>
               <div class="col-2">
-                <div class="card" style="width: 10rem;">
+                <div class="card text-center" style="width: 11rem; height: 29rem;">
                     <img src="<%= bookData.cover %>" class="card-img-top" alt="...">
                     <div class="card-body">
                       <h5 class="card-title"><%= bookData.title %> </h5>
                       <p class="card-text"><%= bookData.author %> </p>
                     </div>
                     <div class="card-body">
-                      <a href="rand/<%=bookData._id%>" class="card-link">More Detail About This Book</a>
+                      <a href="rand/<%=bookData._id%>" class="card-link"><button type="button" class="btn btn-primary">More Details</button></a>
                     </div>
                   </div>
               </div>
@@ -98,14 +101,14 @@
 
                 <% for(bookData of topNovelsFound){ %>
               <div class="col-2">
-                <div class="card" style="width: 10rem;">
+                <div class="card text-center" style="width: 11rem; height: 29rem;">
                     <img src="<%= bookData.cover %>" class="card-img-top" alt="...">
                     <div class="card-body">
                       <h5 class="card-title"><%= bookData.title %> </h5>
                       <p class="card-text"><%= bookData.author %> </p>
                     </div>
                     <div class="card-body">
-                      <a href="rand/<%=bookData._id%>" class="card-link">More Detail About This Book</a>
+                      <a href="rand/<%=bookData._id%>" class="card-link"><button type="button" class="btn btn-primary">More Details</button></a>
                     </div>
                   </div>
               </div>
@@ -125,14 +128,14 @@
 
                 <% for(bookData of terryPratchettFound){ %>
               <div class="col-2">
-                <div class="card" style="width: 10rem;">
+                <div class="card text-center" style="width: 11rem; height: 29rem;">
                     <img src="<%= bookData.cover %>" class="card-img-top" alt="...">
                     <div class="card-body">
                       <h5 class="card-title"><%= bookData.title %> </h5>
                       <p class="card-text"><%= bookData.author %> </p>
                     </div>
                     <div class="card-body">
-                      <a href="rand/<%=bookData._id%>" class="card-link">More Detail About This Book</a>
+                      <a href="rand/<%=bookData._id%>" class="card-link"><button type="button" class="btn btn-primary">More Details</button></a>
                     </div>
                   </div>
               </div>
@@ -145,6 +148,8 @@
            
     </article>
 
-   
+  </div>
+  </div>
+  <!-- Wrap end -->
  
 <%- include('partials/footer') %>
