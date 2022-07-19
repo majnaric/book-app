@@ -69,6 +69,8 @@ app.get("/rand/:id", async (req, res) => {
 
   const singleBooks = await AllOfTheBooks.findById(id);
 
+  console.log(singleBooks)
+
   res.render("single", { singleBooks });
 });
 

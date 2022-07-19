@@ -56,17 +56,17 @@ async function fetchedBooks(bookArray) {
     for (let i = 0; i < bookArray.length; i++) {
       const res = await axios.get(`http://openlibrary.org/search.json?q=` + bookArray[i].title);
 
-
+// console.log(res)
       const newBook = {
         title: res.data.docs[0].title,
         author: res.data.docs[0].author_name,
         cover: "https://covers.openlibrary.org/b/id/" + res.data.docs[0].cover_i + "-M.jpg",
-        numPages: res.data.docs[0].number_of_pages_median,
+        pages: res.data.docs[0].number_of_pages_median,
         isbn: res.data.docs[0].isbn[0]
       };
   
       newBookData.push(newBook);
-      console.log(newBook.title)
+      console.log(newBookData)
       
     }
 

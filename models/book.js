@@ -21,7 +21,7 @@ const allofthebooksSchema = new mongoose.Schema({
         type: Number
     },
     isbn: {
-        any: {}
+        type: String
     },
     bookId: {
         type: Number
