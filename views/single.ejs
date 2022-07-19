@@ -9,12 +9,13 @@
 <div class="container singleBookContent">
 <div class="row">
   <div class="col-4">
-    <img class="singleBookCover"src="<%= singleBooks.cover ? singleBooks.cover : 'There is no image available' %>" alt="">
+    <img class="singleBookCover"src="<%= singleBooks.cover ? singleBooks.cover.replace('-M', '-L') : 'There is no image available' %>" alt="">
     </div>
     <div class="col-8">
 <h1 class="text-center"><%= singleBooks.title %> </h1>
 <h3 class="text-center"><%= singleBooks.author %> </h3>
 <h3 class="text-center">Number of pages: <%= singleBooks.pages %> </h3>
+<h3 class="text-center">ISBN: <%= singleBooks.isbn %> </h3>
 </div>
 </div>
 </div>
