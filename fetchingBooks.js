@@ -62,7 +62,8 @@ async function fetchedBooks(bookArray) {
         author: res.data.docs[0].author_name,
         cover: "https://covers.openlibrary.org/b/id/" + res.data.docs[0].cover_i + "-M.jpg",
         pages: res.data.docs[0].number_of_pages_median,
-        isbn: res.data.docs[0].isbn[0]
+        isbn: res.data.docs[0].isbn[0],
+        subject: res.data.docs[0].subject
       };
   
       newBookData.push(newBook);
@@ -100,3 +101,4 @@ fetchedBooks(bookArray);
    
 
  module.exports = { AllOfTheBooks }  
+

@@ -12,16 +12,19 @@
     <img class="singleBookCover"src="<%= singleBooks.cover ? singleBooks.cover.replace('-M', '-L') : 'There is no image available' %>" alt="">
     </div>
     <div class="col-8">
-<h1 class="text-center"><%= singleBooks.title %> </h1>
-<h3 class="text-center"><%= singleBooks.author %> </h3>
-<h3 class="text-center">Number of pages: <%= singleBooks.pages %> </h3>
-<h3 class="text-center">ISBN: <%= singleBooks.isbn %> </h3>
+<h1 class="text-center singleBookTitle"><%= singleBooks.title %> </h1>
+<h3 class="text-center singleBookAuthor">Author: <%= singleBooks.author %> </h3>
+<h3 class="text-center singleBookPages">Number of pages: <%= singleBooks.pages %> </h3>
+<h3 class="text-center singleBookIsbn">ISBN: <%= singleBooks.isbn %> </h3>
 </div>
 </div>
 </div>
 
 
 </div>
+
+<a href="http://localhost:3000/rand">Back to Books</a>
 </div>
+
 
 <%- include('partials/footer') %>

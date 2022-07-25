@@ -8,6 +8,7 @@ const redditData = require("./data.json");
 const bookSearch = require("./bookSearch.js");
 const mongoose = require("mongoose");
 const ObjectId = require("bson-objectid");
+require("./public/parallax.js")
 // const methodOverride = require('method-override');
 const { AllOfTheBooks } = require("./models/book");
 
@@ -69,7 +70,7 @@ app.get("/rand/:id", async (req, res) => {
 
   const singleBooks = await AllOfTheBooks.findById(id);
 
-  console.log(singleBooks)
+  console.log(singleBooks.cover)
 
   res.render("single", { singleBooks });
 });

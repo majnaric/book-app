@@ -21,7 +21,6 @@ app.set('views', path.join(__dirname, 'views'))
 
 
 
-
 // const search = document.querySelector('#bookSearch');
 
 // async function bookSearch(){
