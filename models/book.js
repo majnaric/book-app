@@ -28,7 +28,10 @@ const allofthebooksSchema = new mongoose.Schema({
     },
     rowOfBooks:{
         type: String
-    }
+    },
+    genre:[{
+        type: String
+    }], 
 
 })
 

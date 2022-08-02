@@ -1,0 +1,51 @@
+<%- include('../partials/head') %>
+
+<!-- Wrap start -->
+<div class="wrap">
+  <div class="content">
+<%- include('../partials/navbar') %>
+
+
+<div class="container">
+    
+
+  <article>
+
+    <div class="container">
+        <h1 class="mt-5 mb-3 text-center">Self-help Books</h1>
+        <div class="row justify-content-between">
+
+            <% for(selfhelp of selfhelpBooks){ %>
+          <div class="col-2">
+            <div class="card text-center" style="width: 11rem; height: 29rem;">
+                <img src="<%= selfhelp.cover %>" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title"><%= selfhelp.title %> </h5>
+                  <p class="card-text"><%= selfhelp.author %> </p>
+                </div>
+                <div class="card-body">
+                  <a href="rand/<%= selfhelp._id%>" class="card-link"><button type="button" class="btn btn-primary">More Details</button></a>
+                </div>
+              </div>
+          </div>
+          <% } %> 
+
+
+        </div>           
+        
+      </div>
+       
+</article>
+   
+
+    <a href="http://localhost:3000/rand">Back to Books</a>
+   
+ 
+
+</div>
+  </div>
+
+  <%- include('../partials/footer') %>
+
+
+

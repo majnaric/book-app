@@ -75,14 +75,39 @@ app.get("/rand/:id", async (req, res) => {
   res.render("single", { singleBooks });
 });
 
-app.get("/r/:subreddit", (req, res) => {
-  const { subreddit } = req.params;
-  const data = redditData[subreddit];
-  if (data) {
-    res.render("subreddit", { ...data });
-  } else {
-    res.render("notfound", { subreddit });
-  }
+app.get("/:genre", async (req, res) => {
+const genreBooks = req.params;
+
+
+if(genreBooks.genre == 'favicon.ico'){ } else{
+
+  const fantasyBooks = await AllOfTheBooks.find({ genre: "Fantasy" });
+  const romanceBooks = await AllOfTheBooks.find({ genre: "Romance" });
+  const historyBooks = await AllOfTheBooks.find({ genre: "History" });
+  const adultBooks = await AllOfTheBooks.find({ genre: "Adult" });
+  const warBooks = await AllOfTheBooks.find({ genre: "War" });
+  const childBooks = await AllOfTheBooks.find({ genre: "Childrens" });
+  const contemporaryBooks = await AllOfTheBooks.find({ genre: "Contemporary" });
+  const biographyBooks = await AllOfTheBooks.find({ genre: "Biography" });
+  const nonfictionBooks = await AllOfTheBooks.find({ genre: "Nonfiction" });
+  const classicsBooks = await AllOfTheBooks.find({ genre: "Classics" });
+  const sciencefictionBooks = await AllOfTheBooks.find({ genre: "Science Fiction" });
+  const novelsBooks = await AllOfTheBooks.find({ genre: "Novels" });
+  const humorBooks = await AllOfTheBooks.find({ genre: "Humor" });
+  const philosophyBooks = await AllOfTheBooks.find({ genre: "Philosophy" });
+  const psichologyBooks = await AllOfTheBooks.find({ genre: "Psychology" });
+  const selfhelpBooks = await AllOfTheBooks.find({ genre: "Self Help" });
+  const scienceBooks = await AllOfTheBooks.find({ genre: "Science" });
+  const adventureBooks = await AllOfTheBooks.find({ genre: "Adventure" });
+  const mysteryBooks = await AllOfTheBooks.find({ genre: "Mystery" });
+  const fictionBooks = await AllOfTheBooks.find({ genre: "Fiction" });
+
+    // res.send(`<h1>Browsing the ${req.params.genre} books </h1>`);
+  const childrensBooks = await AllOfTheBooks.find({ genre: "Childrens" });
+  res.render(`./genre/${genreBooks.genre}`, { fantasyBooks, romanceBooks, psichologyBooks, historyBooks, adultBooks, warBooks, childBooks, fictionBooks, contemporaryBooks, biographyBooks, nonfictionBooks, classicsBooks, sciencefictionBooks, novelsBooks, humorBooks, philosophyBooks, selfhelpBooks, scienceBooks, adventureBooks, mysteryBooks })
+
+}
+
 });
 
 app.get("/r/:subreddit/:postId", (req, res) => {
