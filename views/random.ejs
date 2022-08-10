@@ -10,25 +10,32 @@
 </form> -->
 
 
-<div class="container">
+<div class="container-fluid row">
+  <div class="col-md-2 col-sm-12 sideNavContainer">
     <%- include('partials/sidenav') %>
-    
+  </div>
+  
+  <div class="col-md-10 col-sm-12">
     <article>
 
-        <div class="container">
+        <div class="container col-12">
             <h1 class="mt-5 mb-3 text-center">New Books</h1>
             <div class="row justify-content-between">
 
                 <% for(bookData of newBooksFound){ %>
               <div class="col-xl-2 col-md-4 col-sm-6 col-xs-12">
-                <div class="card text-center" style="width: 9rem; height: 26rem;">
+                <div class="card text-center newBooksCard">
                     <img src="<%= bookData.cover %>" class="card-img-top" alt="...">
                     <div class="card-body">
-                      <h5 class="card-title"><%= bookData.title %> </h5>
+                      <% if(bookData.title.length < 20) { %>  
+                        <h5 class="card-title"><%= bookData.title %> </h5>
+                        <% } else { %>
+                          <h5 class="card-title" style="font-size: 16px;"><%= bookData.title %> </h5>
+                          <% } %> 
                       <p class="card-text"><%= bookData.author %> </p>
                     </div>
                     <div class="card-body">
-                      <a href="rand/<%=bookData._id%>" class="card-link"><button type="button" class="btn btn-primary">More Details</button></a>
+                      <a href="rand/<%=bookData._id%>" class="card-link"><button type="button" class="btn btn-primary btn-sm">More Details</button></a>
                     </div>
                   </div>
               </div>
@@ -47,15 +54,19 @@
             <div class="row justify-content-between">
 
                 <% for(bookData of editorsChoiceFound){ %>
-              <div class="col-2">
-                <div class="card text-center" style="width: 9rem; height: 26rem;">
+              <div class="col-xl-2 col-md-4 col-sm-6 col-xs-12">
+                <div class="card text-center editorsChoiceCard">
                     <img src="<%= bookData.cover %>" class="card-img-top" alt="...">
                     <div class="card-body">
-                      <h5 class="card-title"><%= bookData.title %> </h5>
+                      <% if(bookData.title.length < 26) { %>  
+                        <h5 class="card-title"><%= bookData.title %> </h5>
+                        <% } else { %>
+                          <h5 class="card-title" style="font-size: 14px;"><%= bookData.title %> </h5>
+                          <% } %> 
                       <p class="card-text"><%= bookData.author %> </p>
                     </div>
                     <div class="card-body">
-                      <a href="rand/<%=bookData._id%>" class="card-link"><button type="button" class="btn btn-primary">More Details</button></a>
+                      <a href="rand/<%=bookData._id%>" class="card-link"><button type="button" class="btn btn-primary btn-sm">More Details</button></a>
                     </div>
                   </div>
               </div>
@@ -67,6 +78,8 @@
           </div>
            
     </article>
+  </div>
+
     <article>
 
         <div class="container">
@@ -74,15 +87,19 @@
             <div class="row justify-content-between">
 
                 <% for(bookData of livesBooksFound){ %>
-              <div class="col-2">
-                <div class="card text-center" style="width: 11rem; height: 29rem;">
+              <div class="col-xl-2 col-md-4 col-sm-6 col-xs-12">
+                <div class="card text-center livesBooksCard">
                     <img src="<%= bookData.cover %>" class="card-img-top" alt="...">
                     <div class="card-body">
-                      <h5 class="card-title"><%= bookData.title %> </h5>
+                      <% if(bookData.title.length < 26) { %>  
+                        <h5 class="card-title"><%= bookData.title %> </h5>
+                        <% } else { %>
+                          <h5 class="card-title" style="font-size: 14px;"><%= bookData.title %> </h5>
+                          <% } %> 
                       <p class="card-text"><%= bookData.author %> </p>
                     </div>
                     <div class="card-body">
-                      <a href="rand/<%=bookData._id%>" class="card-link"><button type="button" class="btn btn-primary">More Details</button></a>
+                      <a href="rand/<%=bookData._id%>" class="card-link"><button type="button" class="btn btn-primary btn-sm">More Details</button></a>
                     </div>
                   </div>
               </div>
@@ -101,15 +118,19 @@
             <div class="row justify-content-between">
 
                 <% for(bookData of topNovelsFound){ %>
-              <div class="col-2">
-                <div class="card text-center" style="width: 11rem; height: 29rem;">
+              <div class="col-xl-2 col-md-4 col-sm-6 col-xs-12">
+                <div class="card text-center topNovelsCard">
                     <img src="<%= bookData.cover %>" class="card-img-top" alt="...">
                     <div class="card-body">
+                      <% if(bookData.title.length < 26) { %>  
                       <h5 class="card-title"><%= bookData.title %> </h5>
+                      <% } else { %>
+                        <h5 class="card-title" style="font-size: 14px;"><%= bookData.title %> </h5>
+                        <% } %> 
                       <p class="card-text"><%= bookData.author %> </p>
                     </div>
                     <div class="card-body">
-                      <a href="rand/<%=bookData._id%>" class="card-link"><button type="button" class="btn btn-primary">More Details</button></a>
+                      <a href="rand/<%=bookData._id%>" class="card-link"><button type="button" class="btn btn-primary btn-sm">More Details</button></a>
                     </div>
                   </div>
               </div>
@@ -128,15 +149,19 @@
             <div class="row justify-content-between">
 
                 <% for(bookData of terryPratchettFound){ %>
-              <div class="col-2">
-                <div class="card text-center" style="width: 11rem; height: 29rem;">
+              <div class="col-xl-2 col-md-4 col-sm-6 col-xs-12">
+                <div class="card text-center pratchettCard">
                     <img src="<%= bookData.cover %>" class="card-img-top" alt="...">
                     <div class="card-body">
-                      <h5 class="card-title"><%= bookData.title %> </h5>
+                      <% if(bookData.title.length < 26) { %>  
+                        <h5 class="card-title"><%= bookData.title %> </h5>
+                        <% } else { %>
+                          <h5 class="card-title" style="font-size: 14px;"><%= bookData.title %> </h5>
+                          <% } %> 
                       <p class="card-text"><%= bookData.author %> </p>
                     </div>
                     <div class="card-body">
-                      <a href="rand/<%=bookData._id%>" class="card-link"><button type="button" class="btn btn-primary">More Details</button></a>
+                      <a href="rand/<%=bookData._id%>" class="card-link"><button type="button" class="btn btn-primary btn-sm">More Details</button></a>
                     </div>
                   </div>
               </div>
@@ -148,6 +173,7 @@
           </div>
            
     </article>
+  
 
   </div>
   </div>

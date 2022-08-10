@@ -6,12 +6,13 @@
   <%- include('partials/navbar') %>
 
 
-<div class="container singleBookContent">
+<div class="container-fluid singleBookContent text-center">
+  <article>
 <div class="row">
-  <div class="col-4">
+  <div class="col-lg-4 col-md-12">
     <img class="singleBookCover"src="<%= singleBooks.cover ? singleBooks.cover.replace('-M', '-L') : 'There is no image available' %>" alt="">
     </div>
-    <div class="col-8">
+    <div class="col-lg-8 col-md-12 singleBookInformation">
 <h1 class="text-center singleBookTitle"><%= singleBooks.title %> </h1>
 <h3 class="text-center singleBookAuthor">Author: <%= singleBooks.author %> </h3>
 <h3 class="text-center singleBookPages">Number of pages: <%= singleBooks.pages %> </h3>
@@ -20,11 +21,18 @@
 </div>
 </div>
 
+</article>
+
+<div class="container-fluid text-center">
+  <button type="button" class="btn btn-outline-secondary"><a href="http://localhost:3000/rand" class="buttonBackToBooks">Back to Books</a></button>
+     </div>
+   
 
 </div>
 
-<a href="http://localhost:3000/rand">Back to Books</a>
 </div>
 
 
+<div class="singleBooksFooter">
 <%- include('partials/footer') %>
+</div>

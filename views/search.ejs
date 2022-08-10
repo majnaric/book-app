@@ -17,8 +17,8 @@
 
               <% for(let i = 0; i < booksSearched.length ; i++){ %>
                 <% if(booksSearched[i].seed[i]){ %>
-            <div class="col-2">
-              <div class="card" style="width: 12rem;">
+            <div class="col-xl-2 col-md-4 col-sm-6 col-xs-12">
+              <div class="card text-center genreBooksCard">
 
            
 
@@ -69,8 +69,10 @@
          
   </article>
    
-
-    <a href="http://localhost:3000/rand">Back to Books</a>
+  <div class="container-fluid text-center">
+    <button type="button" class="btn btn-outline-secondary"><a href="http://localhost:3000/rand" class="buttonBackToBooks">Back to Books</a></button>
+       </div>
+     
    
  
 

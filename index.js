@@ -56,6 +56,8 @@ app.get("/rand", async (req, res) => {
     rowOfBooks: "Terry Pratchett Books",
   });
 
+  
+
   res.render("random.ejs", {
     newBooksFound,
     editorsChoiceFound,

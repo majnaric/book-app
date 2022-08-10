@@ -16,8 +16,8 @@
         <div class="row justify-content-between">
 
             <% for(adult of adultBooks){ %>
-          <div class="col-2">
-            <div class="card text-center" style="width: 11rem; height: 29rem;">
+          <div class="col-xl-2 col-md-4 col-sm-6 col-xs-12">
+            <div class="card text-center genreBooksCard">
                 <img src="<%= adult.cover %>" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title"><%= adult.title %> </h5>
@@ -37,8 +37,10 @@
        
 </article>
    
-
-    <a href="http://localhost:3000/rand">Back to Books</a>
+<div class="container-fluid text-center">
+  <button type="button" class="btn btn-outline-secondary"><a href="http://localhost:3000/rand" class="buttonBackToBooks">Back to Books</a></button>
+     </div>
+   
    
  
 
