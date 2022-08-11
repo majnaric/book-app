@@ -5,82 +5,69 @@
 <!-- Wrap start -->
 <div class="wrap">
   <div class="content">
-<%- include('partials/navbar') %>
+    <%- include('partials/navbar') %>
 
-
-<div class="container">
-    
-
-    <article>
-
-      <div class="container">
+    <div class="container">
+      <article>
+        <div class="container">
           <h1 class="mt-5 mb-3 text-center">Searched Book</h1>
           <div class="row justify-content-between">
-     <%if(booksSearched.length !== 0){ %>
-              <% for(let i = 0; i < booksSearched.length ; i++){ %>
-                <% if(booksSearched[i].seed[i]){ %>
+            <%if(booksSearched.length !== 0){ %> <% for(let i = 0; i <
+            booksSearched.length ; i++){ %> <% if(booksSearched[i].seed[i]){ %>
             <div class="col-xl-2 col-md-4 col-sm-6 col-xs-12">
               <div class="card text-center genreBooksCard">
+                <% if (booksSearched[i].cover_i) { %>
 
-           
+                <img
+                  src="https://covers.openlibrary.org/b/id/<%= booksSearched[i].cover_i %>-M.jpg"
+                  class="card-img-top"
+                  alt="Book Cover"
+                />
 
-                  <% if (booksSearched[i].cover_i) { %> 
-                    
-                    <img src="https://covers.openlibrary.org/b/id/<%= booksSearched[i].cover_i %>-M.jpg" class="card-img-top" alt="Book Cover"> 
-                    
-                    <%  } else { %> 
-                      <p>No Image Available</p>
-                      
-                      <% } %> 
-                  <div class="card-body">
-                    <h5 class="card-title"><%= booksSearched[i].title %> </h5>
-                    <!-- Prints author names, max 2 -->
-                    <p class="card-text">
-                    <% for (let x = 0; x < 2; x++){ %> 
-                    
-                    <% if (booksSearched[i].author_name == undefined){ %>
-                     <% 'This book has no author in the records.' %>
-                      <% } else { %> 
-                    <% booksSearched[i].author_name[x] %> 
-                    <% } %>   
-                    <% } %>
-                    </p> 
-                    <!-- Prints category of books, max 2 -->
-                    <% if (booksSearched[i].subject) { %> 
-                      <p class="card-text"> Category:
-                      <% for(let j = 0; j < 2; j++){ %> 
-                    <%= booksSearched[i].subject[j] %> 
+                <% } else { %>
+                <p>No Image Available</p>
 
-                    <% } %> 
+                <% } %>
+                <div class="card-body">
+                  <h5 class="card-title"><%= booksSearched[i].title %></h5>
+                  <!-- Prints author names, max 2 -->
+                  <p class="card-text">
+                    <% for (let x = 0; x < 2; x++){ %> <% if
+                    (booksSearched[i].author_name == undefined){ %> <% 'This
+                    book has no author in the records.' %> <% } else { %> <%
+                    booksSearched[i].author_name[x] %> <% } %> <% } %>
+                  </p>
+                  <!-- Prints category of books, max 2 -->
+                  <% if (booksSearched[i].subject) { %>
+                  <p class="card-text">
+                    Category: <% for(let j = 0; j < 2; j++){ %> <%=
+                    booksSearched[i].subject[j] %> <% } %>
                   </p>
 
-                    <% } else { %>
-                      <p class="card-text"> This book is not categorised </p>
-                      <% } %> 
-                  </div>
-                 
+                  <% } else { %>
+                  <p class="card-text">This book is not categorised</p>
+                  <% } %>
                 </div>
+              </div>
             </div>
-            <% } %> 
-            <% } %> 
-
-            <% } else { %> 
-              <h5 class="card-title" style="margin-bottom: 46.3vh;">You didn't search for valid books.</h5>
-<% } %> 
-          </div>           
-          
+            <% } %> <% } %> <% } else { %>
+            <h5 class="card-title" style="margin-bottom: 46.3vh">
+              You didn't search for valid books.
+            </h5>
+            <% } %>
+          </div>
         </div>
-         
-  </article>
-   
-  <div class="container-fluid text-center">
-    <button type="button" class="btn btn-outline-secondary"><a href="http://localhost:3000/rand" class="buttonBackToBooks">Back to Books</a></button>
-       </div>
-     
-   
- 
+      </article>
 
-</div>
+      <div class="container-fluid text-center">
+        <button type="button" class="btn btn-outline-secondary">
+          <a href="http://localhost:3000/rand" class="buttonBackToBooks"
+            >Back to Books</a
+          >
+        </button>
+      </div>
+    </div>
   </div>
 
   <%- include('partials/footer') %>
+</div>

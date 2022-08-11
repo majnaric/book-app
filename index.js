@@ -9,7 +9,6 @@ const mongoose = require("mongoose");
 const ObjectId = require("bson-objectid");
 const { AllOfTheBooks } = require("./models/book");
 
-
 // connecting to MongoDB
 mongoose
   .connect("mongodb://localhost:27017/booksApp")
@@ -21,7 +20,7 @@ mongoose
     console.log(err);
   });
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + "/public"));
 app.use(express.static(path.join(__dirname, "assets")));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -36,7 +35,6 @@ app.get("/", (req, res) => {
 });
 
 app.get("/rand", async (req, res) => {
-  
   const newBooksFound = await AllOfTheBooks.find({ rowOfBooks: "New Books" });
   const editorsChoiceFound = await AllOfTheBooks.find({
     rowOfBooks: "Editors Choice",
@@ -48,8 +46,6 @@ app.get("/rand", async (req, res) => {
   const terryPratchettFound = await AllOfTheBooks.find({
     rowOfBooks: "Terry Pratchett Books",
   });
-
-  
 
   res.render("random.ejs", {
     newBooksFound,
@@ -73,37 +69,58 @@ app.get("/rand/:id", async (req, res) => {
 // Open Books by their Genre in sidenav of the Homepage
 
 app.get("/:genre", async (req, res) => {
-const genreBooks = req.params;
+  const genreBooks = req.params;
 
+  if (genreBooks.genre == "favicon.ico") {
+  } else {
+    const fantasyBooks = await AllOfTheBooks.find({ genre: "Fantasy" });
+    const romanceBooks = await AllOfTheBooks.find({ genre: "Romance" });
+    const historyBooks = await AllOfTheBooks.find({ genre: "History" });
+    const adultBooks = await AllOfTheBooks.find({ genre: "Adult" });
+    const warBooks = await AllOfTheBooks.find({ genre: "War" });
+    const childBooks = await AllOfTheBooks.find({ genre: "Childrens" });
+    const contemporaryBooks = await AllOfTheBooks.find({
+      genre: "Contemporary",
+    });
+    const biographyBooks = await AllOfTheBooks.find({ genre: "Biography" });
+    const nonfictionBooks = await AllOfTheBooks.find({ genre: "Nonfiction" });
+    const classicsBooks = await AllOfTheBooks.find({ genre: "Classics" });
+    const sciencefictionBooks = await AllOfTheBooks.find({
+      genre: "Science Fiction",
+    });
+    const novelsBooks = await AllOfTheBooks.find({ genre: "Novels" });
+    const humorBooks = await AllOfTheBooks.find({ genre: "Humor" });
+    const philosophyBooks = await AllOfTheBooks.find({ genre: "Philosophy" });
+    const psichologyBooks = await AllOfTheBooks.find({ genre: "Psychology" });
+    const selfhelpBooks = await AllOfTheBooks.find({ genre: "Self Help" });
+    const scienceBooks = await AllOfTheBooks.find({ genre: "Science" });
+    const adventureBooks = await AllOfTheBooks.find({ genre: "Adventure" });
+    const mysteryBooks = await AllOfTheBooks.find({ genre: "Mystery" });
+    const fictionBooks = await AllOfTheBooks.find({ genre: "Fiction" });
 
-if(genreBooks.genre == 'favicon.ico'){ } else{
-
-  const fantasyBooks = await AllOfTheBooks.find({ genre: "Fantasy" });
-  const romanceBooks = await AllOfTheBooks.find({ genre: "Romance" });
-  const historyBooks = await AllOfTheBooks.find({ genre: "History" });
-  const adultBooks = await AllOfTheBooks.find({ genre: "Adult" });
-  const warBooks = await AllOfTheBooks.find({ genre: "War" });
-  const childBooks = await AllOfTheBooks.find({ genre: "Childrens" });
-  const contemporaryBooks = await AllOfTheBooks.find({ genre: "Contemporary" });
-  const biographyBooks = await AllOfTheBooks.find({ genre: "Biography" });
-  const nonfictionBooks = await AllOfTheBooks.find({ genre: "Nonfiction" });
-  const classicsBooks = await AllOfTheBooks.find({ genre: "Classics" });
-  const sciencefictionBooks = await AllOfTheBooks.find({ genre: "Science Fiction" });
-  const novelsBooks = await AllOfTheBooks.find({ genre: "Novels" });
-  const humorBooks = await AllOfTheBooks.find({ genre: "Humor" });
-  const philosophyBooks = await AllOfTheBooks.find({ genre: "Philosophy" });
-  const psichologyBooks = await AllOfTheBooks.find({ genre: "Psychology" });
-  const selfhelpBooks = await AllOfTheBooks.find({ genre: "Self Help" });
-  const scienceBooks = await AllOfTheBooks.find({ genre: "Science" });
-  const adventureBooks = await AllOfTheBooks.find({ genre: "Adventure" });
-  const mysteryBooks = await AllOfTheBooks.find({ genre: "Mystery" });
-  const fictionBooks = await AllOfTheBooks.find({ genre: "Fiction" });
-  
-
-  res.render(`./genre/${genreBooks.genre}`, { fantasyBooks, romanceBooks, psichologyBooks, historyBooks, adultBooks, warBooks, childBooks, fictionBooks, contemporaryBooks, biographyBooks, nonfictionBooks, classicsBooks, sciencefictionBooks, novelsBooks, humorBooks, philosophyBooks, selfhelpBooks, scienceBooks, adventureBooks, mysteryBooks })
-
-}
-
+    res.render(`./genre/${genreBooks.genre}`, {
+      fantasyBooks,
+      romanceBooks,
+      psichologyBooks,
+      historyBooks,
+      adultBooks,
+      warBooks,
+      childBooks,
+      fictionBooks,
+      contemporaryBooks,
+      biographyBooks,
+      nonfictionBooks,
+      classicsBooks,
+      sciencefictionBooks,
+      novelsBooks,
+      humorBooks,
+      philosophyBooks,
+      selfhelpBooks,
+      scienceBooks,
+      adventureBooks,
+      mysteryBooks,
+    });
+  }
 });
 
 // app.get("/r/:subreddit/:postId", (req, res) => {
@@ -118,24 +135,19 @@ if(genreBooks.genre == 'favicon.ico'){ } else{
 // });
 
 app.post("/search", async (req, res) => {
-
   const { books } = req.body;
 
+  const config = { params: { q: books } };
 
-    const config = { params: { q: books } };
+  const result = await axios.get(
+    `http://openlibrary.org/search.json?details=true&`,
+    config
+  );
 
-    const result = await axios.get(
-      `http://openlibrary.org/search.json?details=true&`,
-      config
-    );
+  const booksSearched = result.data.docs;
 
-    const booksSearched = result.data.docs;
-
-    res.render("search.ejs", { booksSearched });
-
-  
+  res.render("search.ejs", { booksSearched });
 });
-
 
 // app.get("/search", (req, res) => {
 //   const { q } = req.query;

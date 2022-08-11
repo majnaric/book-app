@@ -5,52 +5,48 @@
 <!-- Wrap start -->
 <div class="wrap">
   <div class="content">
-<%- include('../partials/navbar') %>
-
-
-<div class="container">
-    
-
-  <article>
+    <%- include('../partials/navbar') %>
 
     <div class="container">
-        <h1 class="mt-5 mb-3 text-center">Psichology Books</h1>
-        <div class="row justify-content-between">
-
+      <article>
+        <div class="container">
+          <h1 class="mt-5 mb-3 text-center">Psichology Books</h1>
+          <div class="row justify-content-between">
             <% for(psichology of psichologyBooks){ %>
-          <div class="col-xl-2 col-md-4 col-sm-6 col-xs-12">
-            <div class="card text-center genreBooksCard">
-                <img src="<%= psichology.cover %>" class="card-img-top" alt="...">
+            <div class="col-xl-2 col-md-4 col-sm-6 col-xs-12">
+              <div class="card text-center genreBooksCard">
+                <img
+                  src="<%= psichology.cover %>"
+                  class="card-img-top"
+                  alt="..."
+                />
                 <div class="card-body">
-                  <h5 class="card-title"><%= psichology.title %> </h5>
-                  <p class="card-text"><%= psichology.author %> </p>
+                  <h5 class="card-title"><%= psichology.title %></h5>
+                  <p class="card-text"><%= psichology.author %></p>
                 </div>
                 <div class="card-body">
-                  <a href="rand/<%=psichology._id%>" class="card-link"><button type="button" class="btn btn-primary">More Details</button></a>
+                  <a href="rand/<%=psichology._id%>" class="card-link"
+                    ><button type="button" class="btn btn-primary">
+                      More Details
+                    </button></a
+                  >
                 </div>
               </div>
+            </div>
+            <% } %>
           </div>
-          <% } %> 
+        </div>
+      </article>
 
-
-        </div>           
-        
+      <div class="container-fluid text-center">
+        <button type="button" class="btn btn-outline-secondary">
+          <a href="http://localhost:3000/rand" class="buttonBackToBooks"
+            >Back to Books</a
+          >
+        </button>
       </div>
-       
-</article>
-   
-
-<div class="container-fluid text-center">
-  <button type="button" class="btn btn-outline-secondary"><a href="http://localhost:3000/rand" class="buttonBackToBooks">Back to Books</a></button>
-     </div>
-   
-   
- 
-
-</div>
+    </div>
   </div>
 
   <%- include('../partials/footer') %>
-
-
-
+</div>
