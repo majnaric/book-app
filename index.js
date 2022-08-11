@@ -1,19 +1,16 @@
+// Connects all the files of the webpage
+
 const axios = require("axios");
 const express = require("express");
 const app = express();
 const path = require("path");
 const bodyParser = require("body-parser");
-const redditData = require("./data.json");
-// const bookData = require('./bookData.json');
-const bookSearch = require("./bookSearch.js");
 const mongoose = require("mongoose");
 const ObjectId = require("bson-objectid");
-require("./public/parallax.js")
-// const methodOverride = require('method-override');
 const { AllOfTheBooks } = require("./models/book");
 
-bookSearch;
 
+// connecting to MongoDB
 mongoose
   .connect("mongodb://localhost:27017/booksApp")
   .then(() => {
@@ -24,7 +21,7 @@ mongoose
     console.log(err);
   });
 
-  app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public'));
 app.use(express.static(path.join(__dirname, "assets")));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -32,18 +29,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Homepage
+
 app.get("/", (req, res) => {
-  res.render("home.ejs");
+  res.render("random.ejs");
 });
 
 app.get("/rand", async (req, res) => {
-  // const dataOfAllBooks = await AllOfTheBooks.find({})
-  // const dataOfEditorsChoice = await EditorsChoice.find({})
-  // const dataOfLivesBooks = await LivesBooks.find({})
-  // const dataOfTopNovels = await TopNovels.find({})
-  // const dataOfPratchett = await TerryPratchett.find({})
-  // console.log(dataOfNewBooks);
-
+  
   const newBooksFound = await AllOfTheBooks.find({ rowOfBooks: "New Books" });
   const editorsChoiceFound = await AllOfTheBooks.find({
     rowOfBooks: "Editors Choice",
@@ -67,15 +60,17 @@ app.get("/rand", async (req, res) => {
   });
 });
 
+// Open SIngle Books found by their ID
+
 app.get("/rand/:id", async (req, res) => {
   const { id, title } = req.params;
 
   const singleBooks = await AllOfTheBooks.findById(id);
 
-  console.log(singleBooks.cover)
-
   res.render("single", { singleBooks });
 });
+
+// Open Books by their Genre in sidenav of the Homepage
 
 app.get("/:genre", async (req, res) => {
 const genreBooks = req.params;
@@ -103,28 +98,32 @@ if(genreBooks.genre == 'favicon.ico'){ } else{
   const adventureBooks = await AllOfTheBooks.find({ genre: "Adventure" });
   const mysteryBooks = await AllOfTheBooks.find({ genre: "Mystery" });
   const fictionBooks = await AllOfTheBooks.find({ genre: "Fiction" });
+  
 
-    // res.send(`<h1>Browsing the ${req.params.genre} books </h1>`);
-  const childrensBooks = await AllOfTheBooks.find({ genre: "Childrens" });
   res.render(`./genre/${genreBooks.genre}`, { fantasyBooks, romanceBooks, psichologyBooks, historyBooks, adultBooks, warBooks, childBooks, fictionBooks, contemporaryBooks, biographyBooks, nonfictionBooks, classicsBooks, sciencefictionBooks, novelsBooks, humorBooks, philosophyBooks, selfhelpBooks, scienceBooks, adventureBooks, mysteryBooks })
 
 }
 
 });
 
-app.get("/r/:subreddit/:postId", (req, res) => {
-  const { subreddit, postId } = req.params;
-  res.send(`Viewing ${postId} post on the ${subreddit} subreddit`);
-});
+// app.get("/r/:subreddit/:postId", (req, res) => {
+//   const { subreddit, postId } = req.params;
+//   res.send(`Viewing ${postId} post on the ${subreddit} subreddit`);
+// });
 
-app.get("/books", (req, res) => {
-  var books = Object.values(bookData);
-  console.log(books);
-  res.render("books.ejs", { books });
-});
+// app.get("/books", (req, res) => {
+//   var books = Object.values(bookData);
+//   console.log(books);
+//   res.render("books.ejs", { books });
+// });
 
 app.post("/search", async (req, res) => {
+
   const { books } = req.body;
+
+  if (!books) {
+    res.send("Nothing found if nothing searched!");
+  }
   const config = { params: { q: books } };
 
   const result = await axios.get(
@@ -145,22 +144,14 @@ app.post("/search", async (req, res) => {
   res.render("search.ejs", { booksSearched });
 });
 
-app.get("/cats", (req, res) => {
-  const cats = ["Blue", "Rocket", "Monty", "Stephanie", "Winston"];
-  res.render("cats.ejs", { cats });
-});
 
-app.get("/dogs", (req, res) => {
-  res.send("WOOF!");
-});
-
-app.get("/search", (req, res) => {
-  const { q } = req.query;
-  if (!q) {
-    res.send("Nothing found if nothing searched!");
-  }
-  res.send(`<h1>Search results for ${q}:</h1>`);
-});
+// app.get("/search", (req, res) => {
+//   const { q } = req.query;
+//   if (!q) {
+//     res.send("Nothing found if nothing searched!");
+//   }
+//   res.send(`<h1>Search results for ${q}:</h1>`);
+// });
 
 app.get("*", (req, res) => {
   res.send(`This page doesn't exist`);
