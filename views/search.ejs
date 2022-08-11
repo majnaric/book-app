@@ -16,7 +16,7 @@
       <div class="container">
           <h1 class="mt-5 mb-3 text-center">Searched Book</h1>
           <div class="row justify-content-between">
-
+     <%if(booksSearched.length !== 0){ %>
               <% for(let i = 0; i < booksSearched.length ; i++){ %>
                 <% if(booksSearched[i].seed[i]){ %>
             <div class="col-xl-2 col-md-4 col-sm-6 col-xs-12">
@@ -64,7 +64,9 @@
             <% } %> 
             <% } %> 
 
-
+            <% } else { %> 
+              <h5 class="card-title" style="margin-bottom: 46.3vh;">You didn't search for valid books.</h5>
+<% } %> 
           </div>           
           
         </div>

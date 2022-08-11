@@ -121,27 +121,19 @@ app.post("/search", async (req, res) => {
 
   const { books } = req.body;
 
-  if (!books) {
-    res.send("Nothing found if nothing searched!");
-  }
-  const config = { params: { q: books } };
 
-  const result = await axios.get(
-    `http://openlibrary.org/search.json?details=true&`,
-    config
-  );
-  const anotherResult = await axios.get(
-    `http://openlibrary.org/search.json`,
-    config
-  );
-  const booksSearched = result.data.docs;
+    const config = { params: { q: books } };
 
-  // Check if in first seed there is a book reference it console logs it is a book
-  booksSearched[12].seed[0].includes("books")
-    ? console.log("this is a book")
-    : console.log("this is not a book");
-  console.log(booksSearched[12].seed[0]);
-  res.render("search.ejs", { booksSearched });
+    const result = await axios.get(
+      `http://openlibrary.org/search.json?details=true&`,
+      config
+    );
+
+    const booksSearched = result.data.docs;
+
+    res.render("search.ejs", { booksSearched });
+
+  
 });
 
 
