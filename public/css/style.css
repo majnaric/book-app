@@ -1,5 +1,7 @@
 /* Complete styling of the Book Application Webpage */
 
+/* Global styles */
+
 body {
   background-color: rgba(110, 110, 110, 0.207);
   color: rgb(81, 81, 81);
@@ -9,9 +11,23 @@ a {
   text-decoration: none;
 }
 
+h1 {
+  font-weight: 700;
+}
+
+h5 {
+  text-align: center;
+}
+
+.content {
+  position: relative;
+}
+
+/* Header, navbar & side navbar styles */
+
 .navbar {
   background-color: rgba(125, 125, 125, 0.229) !important;
-  /* border-bottom: 1px solid #333 !important; */
+  margin: 0 auto;
 }
 
 .fa-bars {
@@ -30,8 +46,22 @@ a {
   transition-duration: 2s;
 }
 
+.searchField {
+  margin-top: 0.5vh;
+}
+
 .navbar-brand {
   font-size: 1.7rem;
+}
+
+.navbar-brand,
+.booksWebpage {
+  margin-right: 8rem;
+  font-size: 2vw;
+}
+
+.justify-content-evenly{
+  margin: 0 auto;
 }
 
 .navbar-brand,
@@ -57,6 +87,8 @@ a {
   height: fit-content;
 }
 
+/* Background styles */
+
 .wrap {
   position: relative;
 }
@@ -76,9 +108,7 @@ a {
   background-size: cover;
 }
 
-.content {
-  position: relative;
-}
+/* Webpage components styles */
 
 .card {
   border: none;
@@ -92,14 +122,8 @@ a {
   background-color: #d8d9da;
 }
 
-.newBooksCard {
-  /* width: 9rem;  */
-  height: 26rem;
-  margin-bottom: 2rem;
-}
-
+.newBooksCard,
 .editorsChoiceCard {
-  /* width: 9rem;  */
   height: 26rem;
   margin-bottom: 2rem;
 }
@@ -107,41 +131,16 @@ a {
 .livesBooksCard,
 .topNovelsCard,
 .pratchettCard {
-  /* width: 11rem;  */
   height: 29rem;
   margin-bottom: 2rem;
-}
-
-h1 {
-  font-weight: 700;
-}
-
-h5 {
-  text-align: center;
 }
 
 .card-img-top {
   height: 15rem;
 }
+
 .card-text:last-child {
   margin-bottom: -15px;
-}
-
-.searchField {
-  margin-top: 0.5vh;
-}
-
-footer {
-  position: absolute;
-  /* width: 99vw; */
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 5rem;
-  background-color: rgba(125, 125, 125, 0.686);
-  color: rgb(0, 0, 0);
-  margin-top: 3rem;
 }
 
 .singleBooks {
@@ -149,7 +148,6 @@ footer {
 }
 
 .singleBookCover {
-  /* width: 24vw; */
   margin: 4rem auto;
 }
 
@@ -158,25 +156,6 @@ footer {
 .singleBookIsbn,
 .genreBooksCard {
   margin: 2rem 0;
-}
-
-.socialIcon {
-  margin: 1rem 0.7rem;
-}
-
-.navBar {
-  margin: 0 auto;
-}
-
-.navbar-brand,
-.booksWebpage {
-  margin-right: 8rem;
-  font-size: 2vw;
-}
-
-.singleBooksFooter {
-  position: relative;
-  top: 20vh;
 }
 
 .singleBookInformation {
@@ -196,17 +175,47 @@ footer {
   background-color: rgba(125, 125, 125, 0.686);
 }
 
-@media only screen and (max-width: 1200px) {
-  .fa-arrow-down {
-    display: none;
-  }
+/* Footer styles */
 
+footer {
+  position: absolute;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5rem;
+  background-color: rgba(125, 125, 125, 0.686);
+  color: rgb(0, 0, 0);
+  margin-top: 3rem;
+}
+
+.socialIcon {
+  margin: 1rem 0.7rem;
+}
+
+.singleBooksFooter {
+  position: relative;
+  top: 20vh;
+}
+
+
+
+
+/* Media Queries */
+
+
+@media only screen and (max-width: 1200px) {
   .booksWebpage {
     font-size: 3vw;
     margin-right: 2vw;
     position: relative;
     top: -3px;
   }
+  
+  .fa-arrow-down {
+    display: none;
+  }
+
   .singleBooksFooter {
     position: relative;
     /* top: 55vh; */
@@ -214,16 +223,6 @@ footer {
 }
 
 @media only screen and (max-width: 1000px) {
-  .singleBooksFooter {
-    position: relative;
-    top: 55vh;
-  }
-
-  .singleBookInformation {
-    position: relative;
-    top: 0;
-  }
-
   .booksWebpage {
     font-size: 4vw;
     margin-right: 2vw;
@@ -234,18 +233,21 @@ footer {
   .searchField {
     margin-top: 1.5vh;
   }
+ 
+  .singleBookInformation {
+    position: relative;
+    top: 0;
+  }
+
+   
+  .singleBooksFooter {
+    position: relative;
+    top: 55vh;
+  }
+
 }
 
 @media only screen and (max-width: 768px) {
-  .navbar-brand {
-    font-size: 1.5rem;
-    margin: 0 auto 0 auto;
-  }
-
-  .fa-arrow-down {
-    display: inline-block;
-  }
-
   .booksWebpage {
     font-size: 4vw;
     margin-right: 2vw;
@@ -256,7 +258,21 @@ footer {
   .searchField {
     margin-top: 0.5vh;
   }
+  
+  .navbar-brand {
+    font-size: 1.5rem;
+    margin: 0 auto 0 auto;
+  }
 
+  .fa-arrow-down {
+    display: inline-block;
+  }
+
+  .categoryModalLink{
+    text-align: center;
+    font-size: 6vh;
+  }
+  
   .singleBooksFooter {
     position: relative;
     top: 20rem;
@@ -264,6 +280,14 @@ footer {
 }
 
 @media only screen and (max-width: 600px) {
+  
+  .booksWebpage {
+    font-size: 4.5vw;
+    margin-right: 2vw;
+    position: relative;
+    top: -3px;
+  }
+  
   .newBooksCard,
   .editorsChoiceCard,
   .livesBooksCard,
@@ -275,13 +299,6 @@ footer {
     margin-bottom: 2rem;
     margin-left: auto;
     margin-right: auto;
-  }
-
-  .booksWebpage {
-    font-size: 4.5vw;
-    margin-right: 2vw;
-    position: relative;
-    top: -3px;
   }
 
   .singleBooksFooter {
