@@ -12,8 +12,9 @@
         <div class="container">
           <h1 class="mt-5 mb-3 text-center">Searched Book</h1>
           <div class="row justify-content-between">
-            <%if(booksSearched.length !== 0){ %> <% for(let i = 0; i <
-            booksSearched.length ; i++){ %> <% if(booksSearched[i].seed[i]){ %>
+            <% if(booksSearched.length !== 0){ %> 
+            <% for(let i = 0; i < booksSearched.length ; i++){ %> 
+              <% if(booksSearched[i].seed[i]){ %>
             <div class="col-xl-2 col-md-4 col-sm-6 col-xs-12">
               <div class="card text-center genreBooksCard">
                 <% if (booksSearched[i].cover_i) { %>
@@ -32,16 +33,20 @@
                   <h5 class="card-title"><%= booksSearched[i].title %></h5>
                   <!-- Prints author names, max 2 -->
                   <p class="card-text">
-                    <% for (let x = 0; x < 2; x++){ %> <% if
-                    (booksSearched[i].author_name == undefined){ %> <% 'This
-                    book has no author in the records.' %> <% } else { %> <%
-                    booksSearched[i].author_name[x] %> <% } %> <% } %>
+                    <% for (let x = 0; x < 2; x++){ %> 
+                      <% if(booksSearched[i].author_name == undefined){ %> 
+                      <% 'This book has no author in the records.' %> 
+                    <% } else { %> 
+                    <% booksSearched[i].author_name[x] %> 
+                    <% } %> 
+                    <% } %>
                   </p>
                   <!-- Prints category of books, max 2 -->
                   <% if (booksSearched[i].subject) { %>
                   <p class="card-text">
-                    Category: <% for(let j = 0; j < 2; j++){ %> <%=
-                    booksSearched[i].subject[j] %> <% } %>
+                    Category: <% for(let j = 0; j < 2; j++){ %> 
+                    <%= booksSearched[i].subject[j] %> 
+                    <% } %>
                   </p>
 
                   <% } else { %>
@@ -50,7 +55,9 @@
                 </div>
               </div>
             </div>
-            <% } %> <% } %> <% } else { %>
+            <% } %> 
+            <% } %> 
+            <% } else { %>
             <h5 class="card-title" style="margin-bottom: 46.3vh">
               You didn't search for valid books.
             </h5>
@@ -61,7 +68,7 @@
 
       <div class="container-fluid text-center">
         <button type="button" class="btn btn-outline-secondary">
-          <a href="http://localhost:3000/rand" class="buttonBackToBooks"
+          <a href="http://localhost:3000/home" class="buttonBackToBooks"
             >Back to Books</a
           >
         </button>

@@ -20,6 +20,8 @@ mongoose
     console.log(err);
   });
 
+
+
 app.use(express.static(__dirname + "/public"));
 app.use(express.static(path.join(__dirname, "assets")));
 app.set("view engine", "ejs");
@@ -31,10 +33,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Homepage
 
 app.get("/", (req, res) => {
-  res.render("random.ejs");
+  res.render("home.ejs");
 });
 
-app.get("/rand", async (req, res) => {
+app.get("/home", async (req, res) => {
   const newBooksFound = await AllOfTheBooks.find({ rowOfBooks: "New Books" });
   const editorsChoiceFound = await AllOfTheBooks.find({
     rowOfBooks: "Editors Choice",
@@ -47,7 +49,7 @@ app.get("/rand", async (req, res) => {
     rowOfBooks: "Terry Pratchett Books",
   });
 
-  res.render("random.ejs", {
+  res.render("home.ejs", {
     newBooksFound,
     editorsChoiceFound,
     livesBooksFound,
@@ -58,7 +60,7 @@ app.get("/rand", async (req, res) => {
 
 // Open SIngle Books found by their ID
 
-app.get("/rand/:id", async (req, res) => {
+app.get("/home/:id", async (req, res) => {
   const { id, title } = req.params;
 
   const singleBooks = await AllOfTheBooks.findById(id);
@@ -123,17 +125,8 @@ app.get("/:genre", async (req, res) => {
   }
 });
 
-// app.get("/r/:subreddit/:postId", (req, res) => {
-//   const { subreddit, postId } = req.params;
-//   res.send(`Viewing ${postId} post on the ${subreddit} subreddit`);
-// });
 
-// app.get("/books", (req, res) => {
-//   var books = Object.values(bookData);
-//   console.log(books);
-//   res.render("books.ejs", { books });
-// });
-
+// Fetching and displaying results of search in a separate webpage
 app.post("/search", async (req, res) => {
   const { books } = req.body;
 
@@ -149,13 +142,8 @@ app.post("/search", async (req, res) => {
   res.render("search.ejs", { booksSearched });
 });
 
-// app.get("/search", (req, res) => {
-//   const { q } = req.query;
-//   if (!q) {
-//     res.send("Nothing found if nothing searched!");
-//   }
-//   res.send(`<h1>Search results for ${q}:</h1>`);
-// });
+
+// Backup display for page not found
 
 app.get("*", (req, res) => {
   res.send(`This page doesn't exist`);
