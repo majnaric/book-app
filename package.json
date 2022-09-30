@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +20,7 @@
     "express-session": "^1.17.3",
     "heroku": "^7.63.4",
     "jquery": "^3.6.0",
-    "mongoose": "^6.4.0"
+    "mongoose": "^6.4.0",
+    "nodemon": "^2.0.20"
   }
 }
