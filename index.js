@@ -1,5 +1,12 @@
 // Connects all the files of the webpage
 
+if(process.env.NODE_ENV !== "production") {
+  require('dotenv').config();
+}
+
+
+
+
 const axios = require("axios");
 const express = require("express");
 const app = express();
@@ -8,10 +15,14 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const ObjectId = require("bson-objectid");
 const { AllOfTheBooks } = require("./models/book");
+const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/booksApp";
+
+// "mongodb://localhost:27017/booksApp"
+
 
 // connecting to MongoDB
 mongoose
-  .connect("mongodb://localhost:27017/booksApp")
+  .connect(dbUrl)
   .then(() => {
     console.log("MONGO CONNECTION OPEN!");
   })

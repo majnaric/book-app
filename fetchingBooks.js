@@ -1,13 +1,19 @@
 // Fetches books from the public API and stores them in local MongoDB Database
+if(process.env.NODE_ENV !== "production") {
+  require('dotenv').config();
+}
+
+
 
 const axios = require("axios");
 const mongoose = require("mongoose");
 const assert = require("assert");
 // const methodOverride = require('method-override');
 const { AllOfTheBooks } = require("./models/book");
+const dbUrl = process.env.DB_URL;
 
 mongoose
-  .connect("mongodb://localhost:27017/booksApp")
+  .connect(dbUrl)
   .then(() => {
     console.log("MONGO CONNECTION OPEN!");
   })
@@ -18,7 +24,7 @@ mongoose
 
 const bookArray = [
   { title: "the silence of the girls" },
-  { title: "red shoes" },
+  { title: "Red Shoes" },
   { title: "the trouble with peace" },
   { title: "island of the missing trees" },
   { title: "stalin" },
@@ -27,7 +33,7 @@ const bookArray = [
   { title: "My Grandmother Asked Me to Tell You She's Sorry" },
   { title: "Notes from Underground" },
   { title: "Jerusalem: The Biography" },
-  { title: "Mark Manson" },
+  { title: "The Subtle Art of Not Giving a F*ck" },
   { title: "speeches that changed the world" },
   { title: "Gazza" },
   { title: "elon musk: tesla, spacex, and the quest for a fantastic future" },
@@ -39,9 +45,7 @@ const bookArray = [
   { title: "November 9 colleen hoover" },
   { title: "How We Lived in Ancient Times" },
   // { title: "war of the worlds" },
-  {
-    title: "Metropolis: A History of the City, Humankind's Greatest Invention",
-  },
+  {title: "Metropolis: A History of the City, Humankind's Greatest Invention" },
   { title: "the shadows alex north" },
   { title: "Good Omens" },
   { title: "The Colour of Magic" },
@@ -80,16 +84,20 @@ async function fetchedBooks(bookArray) {
       `http://openlibrary.org/search.json?q=` + bookArray[i].title
     );
 
-    // console.log(res)
+    let name = res.data.docs[0].author_name[0]
+
+
+
+    // console.log(res.data.docs[0].subject)
     const newBook = {
       title: res.data.docs[0].title,
-      author: res.data.docs[0].author_name,
+      author: name,
       cover:
         "https://covers.openlibrary.org/b/id/" +
         res.data.docs[0].cover_i +
         "-M.jpg",
       pages: res.data.docs[0].number_of_pages_median,
-      isbn: res.data.docs[0].isbn[0],
+      // isbn: res.data.docs[0].isbn,
       subject: res.data.docs[0].subject,
     };
 
@@ -104,7 +112,7 @@ async function fetchedBooks(bookArray) {
   }
 
   const filterArray = [
-    "Silence of the Girls",
+    "The Silence of the Girls",
     "Red Shoes",
     "The Trouble with Peace",
     "The Island of Missing Trees",
@@ -113,16 +121,16 @@ async function fetchedBooks(bookArray) {
   ];
   const filterTwoArray = [
     "The War of the Worlds",
-    "My Grandmother Asked Me to Tell You She's Sorry",
+    "Summary of My Grandmother Asked Me to Tell You She's Sorry",
     "Notes from the Underground",
-    "Eichmann in Jerusalem",
+    "Jerusalem",
     "The Subtle Art of Not Giving a F*ck",
     "Speeches That Changed the World",
   ];
   const filterThreeArray = [
     "Gazza",
-    "Elon Musk and the quest for a fantastic future",
-    "Is This the Real Life?",
+    "Elon Musk",
+    "Is this the real life?",
     "Alexander the Great",
     "Leonardo da Vinci",
     "My Brother, Muhammad Ali",
