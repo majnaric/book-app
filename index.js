@@ -160,7 +160,7 @@ app.get("*", (req, res) => {
   res.send(`This page doesn't exist`);
 });
 
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`LISTENING ON PORT ${port}`);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Our app is running on port ${ PORT }`);
 });
