@@ -22,7 +22,7 @@ const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/booksApp";
 
 // connecting to MongoDB
 mongoose
-  .connect(dbUrl)
+  .connect('mongodb://localhost:27017/booksApp')
   .then(() => {
     console.log("MONGO CONNECTION OPEN!");
   })
@@ -161,6 +161,6 @@ app.get("*", (req, res) => {
 });
 
 const port = process.env.PORT || 3000;
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log(`LISTENING ON PORT ${port}`);
 });
