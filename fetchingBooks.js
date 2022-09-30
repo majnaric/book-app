@@ -1,7 +1,5 @@
 // Fetches books from the public API and stores them in local MongoDB Database
-if(process.env.NODE_ENV !== "production") {
-  require('dotenv').config();
-}
+
 
 
 
@@ -12,15 +10,15 @@ const assert = require("assert");
 const { AllOfTheBooks } = require("./models/book");
 const dbUrl = process.env.DB_URL;
 
-mongoose
-  .connect(dbUrl)
-  .then(() => {
-    console.log("MONGO CONNECTION OPEN!");
-  })
-  .catch((err) => {
-    console.log("Oh no, Mongo connection lost");
-    console.log(err);
-  });
+// mongoose
+//   .connect(dbUrl)
+//   .then(() => {
+//     console.log("MONGO CONNECTION OPEN!");
+//   })
+//   .catch((err) => {
+//     console.log("Oh no, Mongo connection lost");
+//     console.log(err);
+//   });
 
 const bookArray = [
   { title: "the silence of the girls" },
