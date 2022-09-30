@@ -160,7 +160,6 @@ app.get("*", (req, res) => {
   res.send(`This page doesn't exist`);
 });
 
-const PORT = process.env.PORT;
-app.listen(PORT, () => {
-    console.log(`Our app is running on port ${ PORT }`);
+app.listen(process.env.PORT, () => {
+  console.log("LISTENING ON PORT 3000");
 });
